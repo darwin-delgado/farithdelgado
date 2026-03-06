@@ -39,3 +39,10 @@ docker exec -it mysql-reset mysql -u root -e "SELECT user, host, plugin, authent
 | root | localhost | mysql_native_password | *D8C1F2F50C2EF1543896C4F01C6A33C230C8E102 |
 +------+-----------+-----------------------+-------------------------------------------+
 
+
+docker exec -it mysql-reset mysql -u root -e "                                                                                                                                              
+  UPDATE mysql.user SET authentication_string='' WHERE user='root' AND host='localhost';
+  FLUSH PRIVILEGES;                                                                                                                                                                           
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Privacy2024*+';
+  FLUSH PRIVILEGES;"
+
